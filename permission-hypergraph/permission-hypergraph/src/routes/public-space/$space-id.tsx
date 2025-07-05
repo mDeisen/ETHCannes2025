@@ -29,7 +29,7 @@ function PublicSpace() {
       <h1 className="text-2xl font-bold">{name}</h1>
       <ul>
         {applications?.map((application) => (
-          <li key={application.id}>{application.name}</li>
+          <li key={application.id}>{application.name} - {application.domain}</li>
         ))}
       </ul>
     </div>

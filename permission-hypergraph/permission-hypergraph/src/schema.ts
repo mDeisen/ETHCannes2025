@@ -10,7 +10,8 @@ export class Group extends Entity.Class<Group>('Group')({
 }) {}
 
 export class Application extends Entity.Class<Application>('Application')({
-  domain: Type.Text
+  domain: Type.Text,
+  name: Type.Text,
 }) {}
 
 export class Permission extends Entity.Class<Permission>('Permission')({

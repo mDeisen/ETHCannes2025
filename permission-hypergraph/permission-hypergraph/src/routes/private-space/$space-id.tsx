@@ -41,7 +41,7 @@ function PrivateSpace() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createApplication({ domain: domain});
+    createApplication({ domain: domain, name: "Default Application"});
     setDomain('');
   };
 
