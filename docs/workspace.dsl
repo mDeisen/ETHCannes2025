@@ -125,9 +125,14 @@ workspace "ETHCANNES2025" "Hackathon project" {
                 strokeWidth 3
             }
 
+            element "Software System" {
+                opacity 60
+            }
+
             element "focus" {
                 background lightskyblue
                 stroke darkslateblue
+                opacity 100
             }
 
             element "database" {
