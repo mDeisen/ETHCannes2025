@@ -16,9 +16,8 @@ export default function Dashboard() {
           <div className="subtitle">
             A graph-based tool for managing users and permissions for your dapp
           </div>
-        </div>
-        <div className="hero-footer">
           <button
+            className="button is-white"
             onClick={() => {
               redirectToConnect({
                 storage: localStorage,
@@ -38,15 +37,12 @@ export default function Dashboard() {
       <div className="container is-max-desktop">
         <section className="section">
           <AppsList/>
-          <div>
-            <Link href={"/apps/example/users"}>Go to example app</Link>
-          </div>
-          <div>
-            <Link href={"/apps"}>Explore apps</Link>
-          </div>
         </section>
         <section className="section">
-          <Link href={"/create-app"}>Create your first app</Link>
+          <Link href={"/create-app"}>
+            <button className="button is-primary">
+              Create your first app
+            </button></Link>
         </section>
       </div>
     </>
