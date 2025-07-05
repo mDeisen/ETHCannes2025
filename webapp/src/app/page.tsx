@@ -1,3 +1,4 @@
+import AppsList from "@/components/appsList";
 import Link from "next/link";
 
 export default function Dashboard() {
@@ -15,7 +16,7 @@ export default function Dashboard() {
       </section>
       <div className="container is-max-desktop">
         <section className="section">
-          List of your apps and roles
+          <AppsList/>
           <div>
             <Link href={"/apps/example/users"}>Go to example app</Link>
           </div>
