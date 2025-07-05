@@ -7,7 +7,7 @@ const AppsList: FC = () => {
     const apps = useApps();
 
     return <div>{apps
-        ? apps.map((app) => <AppCard app={app} key={app.name}/>)
+        ? apps.map((app) => <AppCard app={app} key={app.id}/>)
         : "No apps found"
     }</div>
 }
