@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import AppsListComponent from "@/components/appsList";
 import MyAppsList from "@/components/myAppsList";
