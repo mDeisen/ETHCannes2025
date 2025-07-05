@@ -30,6 +30,8 @@ export default function AppPermissions() {
         devMode: true,
     } as Partial<SelfApp>).build();
 
+    const address = identity?.address
+
     const handleSuccess = async (data?: any) => {
         console.log('Verification successful', data);
         // If we get a tx hash from the data, use it to display progress
@@ -37,7 +39,7 @@ export default function AppPermissions() {
             setTxHash(data.txHash);
         }
         // Add user to desired group
-        addUserToGroup(identity?.address ?? "", appId, groupId)
+        addUserToGroup(address ?? "", appId, groupId)
     };
 
     const handleError = async (error?: any) => {

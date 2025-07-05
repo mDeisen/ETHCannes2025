@@ -6,11 +6,11 @@ import { Application } from "@/connectors/schema";
 
 const MyAppsList: FC = () => {
     const { identity, authenticated } = useHypergraphAuth()
+    const { data: apps, isPending, isError } = useQuery(Application, { mode: 'public' });
     if (!authenticated || !identity) {
         return <div>Please authenticate to see your apps...</div>
     }
 
-    const { data: apps, isPending, isError } = useQuery(Application, { mode: 'public' });
     if (isPending) {
         return <div>Loading...</div>
     }

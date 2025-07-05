@@ -3,6 +3,7 @@ import { type FC } from "react"
 import { Group } from "@/connectors/schema"
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Group } from "@/connectors/schema";
 
 const GroupCard: FC<{group: Group}> = ({group}) => {
     const { appId } = useParams();
@@ -12,10 +13,6 @@ const GroupCard: FC<{group: Group}> = ({group}) => {
             <p className="card-header-title">
                 {group.name}
             </p>
-        </div>
-        <div className="card-content">
-            Self-enrollment available.
-            Minimum age: 15
         </div>
         <footer className="card-footer">
             <Link className="card-footer-item" href={`/apps/${appId}/groups/${group.name}/enroll`}>Enroll</Link>
