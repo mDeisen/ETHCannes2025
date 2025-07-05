@@ -17,13 +17,24 @@ const getValidatedPassword = async () => {
   }
 };
 
+const getWalletFromMnemonic = async () => {
+  while (true) {
+    const mnemonic = await password({ message: "Paste your mnemonic phrase:" });
+    try {
+      const wallet = ethers.Wallet.fromPhrase(mnemonic);
+      return wallet;
+    } catch (e) {
+      console.log("❌ Invalid mnemonic format. Please try again.");
+    }
+  }
+};
+
 const getWalletFromPrivateKey = async () => {
   while (true) {
     const privateKey = await password({ message: "Paste your private key:" });
     try {
       const wallet = new ethers.Wallet(privateKey);
       return wallet;
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       console.log("❌ Invalid private key format. Please try again.");
     }
@@ -33,7 +44,15 @@ const getWalletFromPrivateKey = async () => {
 const setNewEnvConfig = async (existingEnvConfig = {}) => {
   console.log("👛 Importing Wallet\n");
 
-  const wallet = await getWalletFromPrivateKey();
+  // Ask user which method they want to use
+  const method = await password({ message: "Enter '1' for private key or '2' for mnemonic:" });
+  
+  let wallet;
+  if (method === '2') {
+    wallet = await getWalletFromMnemonic();
+  } else {
+    wallet = await getWalletFromPrivateKey();
+  }
 
   const pass = await getValidatedPassword();
   const encryptedJson = await wallet.encrypt(pass);
