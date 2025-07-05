@@ -1,4 +1,4 @@
-import { Application } from '@/schema';
+import { Application, Group, User, Permission } from '@/schema';
 import {
   HypergraphSpaceProvider,
   preparePublish,
@@ -32,6 +32,10 @@ function PrivateSpace() {
   const { data: publicSpaces } = useSpaces({ mode: 'public' });
   const [selectedSpace, setSelectedSpace] = useState<string>('');
   const createApplication = useCreateEntity(Application);
+  // const createUser = useCreateEntity(User);
+  // const createGroup = useCreateEntity(Group);
+  // const createPermission = useCreateEntity(Permission);
+
   const [domain, setDomain] = useState('');
   const { getSmartSessionClient } = useHypergraphApp();
 
@@ -42,6 +46,9 @@ function PrivateSpace() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     createApplication({ domain: domain, name: "Default Application"});
+    // const user = createUser({ name: "Default User"})
+    // const group = createGroup({ name: "Default Group", users: [user.id]})
+    // const permission = createPermission({name: "Default Permission", })
     setDomain('');
   };
 
