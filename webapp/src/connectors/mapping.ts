@@ -10,18 +10,29 @@ export const mapping: Mapping = {
     }
   },
   User: {
-    typeIds: [Id.Id("d2d6ad9d-434b-4ffd-8a0c-e54b193a7460")],
+    typeIds: [Id.Id("d5812d54-4690-4ef5-b287-ce69965f832b")],
     properties: {
         name: Id.Id("a126ca53-0c8e-48d5-b888-82c734c38935"),
     }
   },
   Group: {
-    typeIds: [Id.Id("61bbc9b2-1b68-47f6-8991-688aa518405f")],
+    typeIds: [Id.Id("2a37fb16-9b5a-4ab7-897f-672db1f38a6a")],
     properties: {
         name: Id.Id("a126ca53-0c8e-48d5-b888-82c734c38935"),
     },
     relations: {
-        users: Id.Id("a55dd9b0-c015-4b77-935e-c515f1614687")
+        users: Id.Id("d3a2c871-18e0-4dea-8fae-ab5669cc3bb5")
     }
   },
+  Permission: {
+    typeIds: [Id.Id("8cc69572-f077-49f6-ae53-68572c18090c")],
+    properties: {
+        name: Id.Id("a126ca53-0c8e-48d5-b888-82c734c38935"),
+        permissionType: Id.Id("95ac3d0c-a9c9-47cf-ab68-6b03939ca6e3")
+    },
+    relations: {
+      application: Id.Id("9ca22737-a6e5-43fd-ac65-36f5fa3e589a"),
+      group: Id.Id("f665062f-73b6-4be3-90f4-2168508e0a04"),
+    }
+  }
 };
