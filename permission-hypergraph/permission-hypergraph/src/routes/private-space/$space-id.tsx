@@ -31,8 +31,8 @@ function PrivateSpace() {
   const { data: applications } = useQuery(Application, { mode: 'private' });
   const { data: publicSpaces } = useSpaces({ mode: 'public' });
   const [selectedSpace, setSelectedSpace] = useState<string>('');
-  const createAddress = useCreateEntity(Application);
-  const [addressName, setAddressName] = useState('');
+  const createApplication = useCreateEntity(Application);
+  const [domain, setDomain] = useState('');
   const { getSmartSessionClient } = useHypergraphApp();
 
   if (!ready) {
@@ -41,8 +41,8 @@ function PrivateSpace() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createAddress({ name: addressName, description: 'Beautiful application' });
-    setAddressName('');
+    createApplication({ domain: domain});
+    setDomain('');
   };
 
   const publishToPublicSpace = async (application: Application) => {
@@ -74,9 +74,19 @@ function PrivateSpace() {
     <div className="flex flex-col h-screen">
       <h1 className="text-2xl font-bold">{name}</h1>
       <form onSubmit={handleSubmit}>
+        <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded">
+          <h3 className="text-sm font-semibold text-blue-800">Create New Application</h3>
+          <p className="text-xs text-blue-600">Fill in the details below to create a new Application entity</p>
+        </div>
         <label className="flex flex-col">
-          <span className="text-sm font-bold">Application</span>
-          <input type="text" value={addressName} onChange={(e) => setAddressName(e.target.value)} />
+          <span className="text-sm font-bold">Domain</span>
+          <input 
+            type="text" 
+            value={domain} 
+            onChange={(e) => setDomain(e.target.value)}
+            placeholder="Enter domain for new application"
+            required
+          />
         </label>
         <button type="submit">Create Application</button>
       </form>
@@ -84,7 +94,7 @@ function PrivateSpace() {
       <ul>
         {applications?.map((application) => (
           <li key={application.id}>
-            {application.name}
+            {application.domain}
             <select value={selectedSpace} onChange={(e) => setSelectedSpace(e.target.value)}>
               <option value="">Select a space</option>
               {publicSpaces?.map((space) => (
