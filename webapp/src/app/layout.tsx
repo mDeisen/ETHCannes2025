@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
+"use client"
 import "@/styles/index.scss"
 import Navbar from "@/components/Navbar";
 import { HypergraphAppProvider, HypergraphSpaceProvider } from "@graphprotocol/hypergraph-react";
-
-export const metadata: Metadata = {
-  title: "I'm Graph",
-  description: "Graph-based app for dapp IAM",
-};
 
 export default function RootLayout({
   children,

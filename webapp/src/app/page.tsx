@@ -1,3 +1,4 @@
+"use client"
 import AppsList from "@/components/appsList";
 import { useHypergraphApp } from "@graphprotocol/hypergraph-react";
 import Link from "next/link";
