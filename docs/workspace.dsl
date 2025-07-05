@@ -28,7 +28,7 @@ workspace "ETHCANNES2025" "Hackathon project" {
         }
 
         # Internal system
-        hack = softwareSystem "The Hack" "" "focus" {
+        hack = softwareSystem "Any Auth" "" "focus" {
             applicationContract = container "Application Contract" "Contract for the demo app leveraging graph for IAM. Also forwards data from Self to graph." "Solidity, deployed to ETH Mainnet or Sepolia" {
                 lzInterface = component "Layer Zero interface" {
                     layerZero -> this "Forward transaction"

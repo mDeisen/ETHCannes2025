@@ -1,12 +1,12 @@
 import { type FC } from "react"
-import { App } from "@/connectors/hypergraph"
+import { Application } from "@/connectors/schema"
 import Link from "next/link";
 
-const AppCard: FC<{app: App}> = ({app}) =>
+const AppCard: FC<{app: Application}> = ({app}) =>
     <div className="card">
         <div className="card-header">
             <p className="card-header-title">
-                <Link href={`/apps/${app.id}`}> {app.name} </Link>
+                <Link href={`/apps/${app.name}`}> {app.name} </Link>
             </p>
         </div>
         <div className="card-content">

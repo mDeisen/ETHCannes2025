@@ -18,7 +18,7 @@ sequenceDiagram
  User->>App Frontend: Enroll to group
  App Frontend->>Self.xyz: Forward user to verification
  Self.xyz->>Smart Contract Backend: Return verified age and citizenship
- Smart Contract Backend->>ENS: Add text record (and subdomain if new) to our own domain to capture proofs
+ Smart Contract Backend->>ENS: Add text record (and subdomain if new) to our own domain to record permissions on-chain
  App Frontend->>ENS: Wait for update of record
  App Frontend->>Hypergraph: Add user to requested group
 ```
