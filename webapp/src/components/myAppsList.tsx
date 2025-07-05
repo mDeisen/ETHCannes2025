@@ -1,15 +1,32 @@
 "use client"
 import { type FC } from "react"
 import AppCard from "./appCard";
-import { useMyApps } from "@/connectors/hypergraph"
+import { useHypergraphAuth, useQuery } from "@graphprotocol/hypergraph-react";
+import { Application } from "@/connectors/schema";
 
 const MyAppsList: FC = () => {
-    const apps = useMyApps();
+    const { identity, authenticated } = useHypergraphAuth()
+    if (!authenticated || !identity) {
+        return <div>Please authenticate to see your apps...</div>
+    }
 
-    return <div>{apps
-        ? apps.map((app) => <AppCard app={app} key={app.name}/>)
-        : "No apps found"
-    }</div>
+    const { data: apps, isPending, isError } = useQuery(Application, { mode: 'public' });
+    if (isPending) {
+        return <div>Loading...</div>
+    }
+
+    if (isError) {
+        return <div>Error</div>
+    }
+
+    return (
+        <div>
+            {apps && apps.length > 0 
+                ? apps.map((app) => <AppCard app={app} key={app.id}/>)
+                : "No apps found"
+            }
+        </div>
+    )
 }
 
 export default MyAppsList;

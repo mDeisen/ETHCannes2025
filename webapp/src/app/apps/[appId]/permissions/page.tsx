@@ -14,7 +14,7 @@ export default function AppPermissions() {
       <div className="container is-max-desktop">
         <section className="section">
           <h4 className="is-size-4">Permissions</h4>
-          <PermissionsList appId={appId}/>
+          <PermissionsList domain={appId}/>
         </section>
         <section className="section">
           <h4 className="is-size-4">Roles</h4>
