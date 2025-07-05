@@ -39,7 +39,7 @@ workspace "ETHCANNES2025" "Hackathon project" {
                 }
 
                 identificationFunction = component "Function for adding new users to app" {
-                    -> graph "Add user with verified data"
+                    -> ens "Add text record with verified user data"
                     lzInterface -> this "Calls after receiving verified user data"
                 }
             }
@@ -49,7 +49,7 @@ workspace "ETHCANNES2025" "Hackathon project" {
                     -> layerZero "Sends transactions after identifying user" "" "async"
                 }
 
-                -> self "Send user data"
+                self -> this "Send verified user data"
 
                 -> applicationContract.identificationFunction "Forward verified user data" "Layer Zero" "async"
             }
@@ -57,8 +57,9 @@ workspace "ETHCANNES2025" "Hackathon project" {
             nextApp = container "Hybrid App" "Backend and Frontends" "Next.js, Hypergraph, Bulma" {
                 subjectManagementPage = component "Subject Management" "Page for adding/updating groups and viewing users" {
                     admin -> this "Manages group assignments"
-                    -> ENS "Query user name"
-                    -> graph "Read users. Read/write groups" "Hypergraph SDK" "async"
+                    -> ENS "Read attestations"
+                    -> hack.selfConnector "Forward to identification for enrollment"
+                    -> graph "Read/write groups and users" "Hypergraph SDK" "async"
                 }
 
                 objectManagementPage = component "Object Management" "Page for adding/updatings roles and access rights " {
@@ -68,7 +69,6 @@ workspace "ETHCANNES2025" "Hackathon project" {
 
                 dashboard = component "Dashboard" "Requests login and displays user's roles" {
                     user -> this "Login"
-                    -> hack.selfConnector "Forward to identification on first login"
                     -> graph "Query roles" "Hypergraph SDK"
                 }
 
