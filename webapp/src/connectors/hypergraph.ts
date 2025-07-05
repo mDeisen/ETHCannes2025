@@ -13,6 +13,7 @@ export interface Permission {
 
 export interface Group {
     name: string,
+    minAge: number,
     id: string
 }
 
@@ -51,9 +52,10 @@ export function usePermissions(appName: string): Permission[] {
     }])[0]
 }
 
-export function useGroups(appName: string): Permission[] {
+export function useGroups(appName: string): Group[] {
     return useState([{
         name: `Users of ${appName}`,
+        minAge: 15,
         id: "Users"
     }])[0]
 }
