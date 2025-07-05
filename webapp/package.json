@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@graphprotocol/hypergraph-react": "^0.0.12",
     "bulma": "^1.0.4",
     "classnames": "^2.5.1",
     "next": "15.3.5",
