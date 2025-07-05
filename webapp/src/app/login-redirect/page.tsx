@@ -1,16 +1,14 @@
-'use client';
+"use client";
 
 import { useHypergraphApp } from '@graphprotocol/hypergraph-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 
-export default function AuthenticateSuccessPage() {
+const LoginRedirect: FC = () => {
   const { processConnectAuthSuccess } = useHypergraphApp();
-  const router = useRouter();
   const searchParams = useSearchParams();
-
-  const ciphertext = searchParams.get('ciphertext') || '';
-  const nonce = searchParams.get('nonce') || '';
+  const router = useRouter();
+  const [ ciphertext, nonce] = [searchParams.get("ciphertext"), searchParams.get("nonce")];
 
   useEffect(() => {
     if (ciphertext && nonce) {
@@ -21,3 +19,5 @@ export default function AuthenticateSuccessPage() {
 
   return <div>Authenticating …</div>;
 }
+
+export default LoginRedirect;

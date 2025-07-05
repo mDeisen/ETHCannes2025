@@ -1,8 +1,19 @@
 import Link from "next/link";
 import AppsListComponent from "@/components/appsList";
 import MyAppsList from "@/components/myAppsList";
+import { useHypergraphAuth } from "@graphprotocol/hypergraph-react";
+import { useEffect } from "react";
 
 export default function AppsList() {
+  const { authenticated, identity } = useHypergraphAuth();
+
+  useEffect(() => {
+    console.log(`Authenticated? ${authenticated}`);
+    if (identity) {
+      console.table(identity);
+    }
+  })
+
   return (
     <>
       <div className="container is-max-desktop">
