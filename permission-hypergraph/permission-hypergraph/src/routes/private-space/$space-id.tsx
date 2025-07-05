@@ -1,4 +1,4 @@
-import { Appliation } from '@/schema';
+import { Application } from '@/schema';
 import {
   HypergraphSpaceProvider,
   preparePublish,
@@ -28,10 +28,10 @@ function RouteComponent() {
 
 function PrivateSpace() {
   const { name, ready } = useSpace({ mode: 'private' });
-  const { data: appliations } = useQuery(Appliation, { mode: 'private' });
+  const { data: applications } = useQuery(Application, { mode: 'private' });
   const { data: publicSpaces } = useSpaces({ mode: 'public' });
   const [selectedSpace, setSelectedSpace] = useState<string>('');
-  const createAddress = useCreateEntity(Appliation);
+  const createAddress = useCreateEntity(Application);
   const [addressName, setAddressName] = useState('');
   const { getSmartSessionClient } = useHypergraphApp();
 
@@ -41,17 +41,17 @@ function PrivateSpace() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createAddress({ name: addressName, description: 'Beautiful appliation' });
+    createAddress({ name: addressName, description: 'Beautiful application' });
     setAddressName('');
   };
 
-  const publishToPublicSpace = async (appliation: Appliation) => {
+  const publishToPublicSpace = async (application: Application) => {
     if (!selectedSpace) {
       alert('No space selected');
       return;
     }
     try {
-      const { ops } = await preparePublish({ entity: appliation, publicSpace: selectedSpace });
+      const { ops } = await preparePublish({ entity: application, publicSpace: selectedSpace });
       const smartSessionClient = await getSmartSessionClient();
       if (!smartSessionClient) {
         throw new Error('Missing smartSessionClient');
@@ -59,14 +59,14 @@ function PrivateSpace() {
       const publishResult = await publishOps({
         ops,
         space: selectedSpace,
-        name: 'Publish Appliation',
+        name: 'Publish Application',
         walletClient: smartSessionClient,
       });
       console.log(publishResult, ops);
-      alert('Appliation published to public space');
+      alert('Application published to public space');
     } catch (error) {
       console.error(error);
-      alert('Error publishing appliation to public space');
+      alert('Error publishing application to public space');
     }
   };
 
@@ -75,16 +75,16 @@ function PrivateSpace() {
       <h1 className="text-2xl font-bold">{name}</h1>
       <form onSubmit={handleSubmit}>
         <label className="flex flex-col">
-          <span className="text-sm font-bold">Appliation</span>
+          <span className="text-sm font-bold">Application</span>
           <input type="text" value={addressName} onChange={(e) => setAddressName(e.target.value)} />
         </label>
-        <button type="submit">Create Appliation</button>
+        <button type="submit">Create Application</button>
       </form>
 
       <ul>
-        {appliations?.map((appliation) => (
-          <li key={appliation.id}>
-            {appliation.name}
+        {applications?.map((application) => (
+          <li key={application.id}>
+            {application.name}
             <select value={selectedSpace} onChange={(e) => setSelectedSpace(e.target.value)}>
               <option value="">Select a space</option>
               {publicSpaces?.map((space) => (
@@ -93,7 +93,7 @@ function PrivateSpace() {
                 </option>
               ))}
             </select>
-            <button onClick={() => publishToPublicSpace(appliation)}>Publish</button>
+            <button onClick={() => publishToPublicSpace(application)}>Publish</button>
           </li>
         ))}
       </ul>

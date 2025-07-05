@@ -1,6 +1,6 @@
 import { Entity, Type } from '@graphprotocol/hypergraph';
 
-export class Appliation extends Entity.Class<Appliation>('Appliation')({
+export class Application extends Entity.Class<Application>('Application')({
   domain: Type.Text
 }) {}
 

@@ -1,4 +1,4 @@
-import { Appliation } from '@/schema';
+import { Application } from '@/schema';
 import { HypergraphSpaceProvider, useQuery, useSpace } from '@graphprotocol/hypergraph-react';
 import { createFileRoute } from '@tanstack/react-router';
 
@@ -18,7 +18,7 @@ function RouteComponent() {
 
 function PublicSpace() {
   const { ready, name } = useSpace({ mode: 'public' });
-  const { data: appliations } = useQuery(Appliation, { mode: 'public' });
+  const { data: applications } = useQuery(Application, { mode: 'public' });
 
   if (!ready) {
     return <div>Loading...</div>;
@@ -28,8 +28,8 @@ function PublicSpace() {
     <div className="flex flex-col h-screen">
       <h1 className="text-2xl font-bold">{name}</h1>
       <ul>
-        {appliations?.map((appliation) => (
-          <li key={appliation.id}>{appliation.name}</li>
+        {applications?.map((application) => (
+          <li key={application.id}>{application.name}</li>
         ))}
       </ul>
     </div>
