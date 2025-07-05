@@ -11,7 +11,7 @@ export default function Dashboard() {
       <section className="hero is-small is-primary">
         <div className="hero-body">
           <div className="title">
-            I&#39;m Graph
+            AnyAuth
           </div>
           <div className="subtitle">
             A graph-based tool for managing users and permissions for your dapp
