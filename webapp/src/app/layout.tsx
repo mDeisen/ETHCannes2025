@@ -13,7 +13,7 @@ export default function RootLayout({
     <html lang="en">
       <body data-theme="theme-light">
         <HypergraphAppProvider mapping={mapping}>
-          <HypergraphSpaceProvider space="c3f16554-a44a-4ed6-8147-4d3aab7270a0">
+          <HypergraphSpaceProvider space="37a2994a-ed71-47d4-b88d-691cff5883b4">
             <Navbar/>
             {children}
           </HypergraphSpaceProvider>
