@@ -3,16 +3,33 @@ workspace "ETHCANNES2025" "Hackathon project" {
     !identifiers hierarchical
 
     model {
+        # Personas
         admin = person "Administrator" ""
         user = person "user" ""
 
-        self = softwareSystem "Self.xyz"
-        layerZero = softwareSystem "Layer Zero" "" "queue"
-        graph = softwareSystem "The Graph" "" "database"
-        ens = softwareSystem "ENS" "" "database"
+        # External systems
+        self = softwareSystem "Self.xyz" {
+            url "https://github.com/selfxyz/self"
+        }
 
+        layerZero = softwareSystem "Layer Zero" {
+            tags "queue"
+            url "https://github.com/LayerZero-Labs/LayerZero-v2"
+        }
+
+        graph = softwareSystem "The Graph"  {
+            url "https://github.com/graphprotocol/hypergraph"
+            tags "database"    
+        }
+
+        ens = softwareSystem "ENS" {
+            url "https://docs.ens.domains/"
+            tags "database"
+        }
+
+        # Internal system
         hack = softwareSystem "The Hack" "" "focus" {
-            applicationContract = container "Application Contract" "Contract for the demo app leveraging graph for IAM. Also forwards data from Self to graph." "ETH Mainnet / Sepolia" {
+            applicationContract = container "Application Contract" "Contract for the demo app leveraging graph for IAM. Also forwards data from Self to graph." "Solidity, deployed to ETH Mainnet or Sepolia" {
                 lzInterface = component "Layer Zero interface" {
                     layerZero -> this "Forward transaction"
                 }
@@ -27,7 +44,7 @@ workspace "ETHCANNES2025" "Hackathon project" {
                 }
             }
 
-            selfConnector = container "Self.xyz Connector Contract" "Contract for connecting with Self" "Celo" {
+            selfConnector = container "Self.xyz Connector Contract" "Contract for connecting with Self" "Solidity, deployed to Celo" {
                 lzInterface = component "Layer Zero interface" {
                     -> layerZero "Sends transactions after identifying user" "" "async"
                 }
