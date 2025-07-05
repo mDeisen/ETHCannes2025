@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { SelfQRcodeWrapper, SelfApp, SelfAppBuilder } from '@selfxyz/qrcode';
 import { useHypergraphAuth } from "@graphprotocol/hypergraph-react";
 import { useState } from "react";
-import { addUserToGroup } from "@/connectors/hypergraph";
+import { addUserToGroup } from "@/connectors/hypergraph-actions";
 
 const SELF_CONTRACT_ADDRESS = "0x7b6436b0c98f62380866d9432c2af0ee08ce16a171bda6951aecd95ee1307d61";
 

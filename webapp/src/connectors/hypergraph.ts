@@ -59,8 +59,3 @@ export function useGroups(appName: string): Group[] {
         id: "Users"
     }])[0]
 }
-
-export function addUserToGroup(userId: string, appId: string, groupId: string) {
-    "use server"
-    /* Insert (server-site) action to add user to group here. This needs to use the backend's identity */
-}
