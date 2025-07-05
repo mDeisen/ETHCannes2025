@@ -1,5 +1,5 @@
+import { Permission } from "@/connectors/schema";
 import { type FC } from "react"
-import { Permission } from "@/connectors/hypergraph"
 
 const PermissionCard: FC<{permission: Permission}> = ({permission}) =>
     <div className="card">

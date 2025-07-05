@@ -1,6 +1,6 @@
 "use client"
 import { type FC } from "react"
-import { Group } from "@/connectors/hypergraph"
+import { Group } from "@/connectors/schema"
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -15,10 +15,10 @@ const GroupCard: FC<{group: Group}> = ({group}) => {
         </div>
         <div className="card-content">
             Self-enrollment available.
-            Minimum age: {group.minAge}
+            Minimum age: 15
         </div>
         <footer className="card-footer">
-            <Link className="card-footer-item" href={`/apps/${appId}/groups/${group.id}/enroll`}>Enroll</Link>
+            <Link className="card-footer-item" href={`/apps/${appId}/groups/${group.name}/enroll`}>Enroll</Link>
         </footer>
     </div>
 }
