@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.0 <0.9.0;
+pragma solidity ^0.8.20;
 
 import {StringUtils} from "@ensdomains/ens-contracts/contracts/utils/StringUtils.sol";
 
 import {IL2Registry} from "../interfaces/IL2Registry.sol";
 
-/// @dev This is an example registrar contract that is mean to be modified.
-contract L2Registrar {
+contract AnyAuthL2Registrar {
     using StringUtils for string;
 
     /// @notice Emitted when a new name is registered
@@ -41,7 +40,7 @@ contract L2Registrar {
     /// @notice Registers a new name
     /// @param label The label to register (e.g. "name" for "name.eth")
     /// @param owner The address that will own the name
-    function register(string calldata label, address owner) external {
+    function register(string calldata label, address owner, string calldata roles) external {
         bytes32 node = _labelToNode(label);
         bytes memory addr = abi.encodePacked(owner); // Convert address to bytes
 
@@ -52,6 +51,9 @@ contract L2Registrar {
 
         // Set the forward address for mainnet ETH (coinType 60) for easier debugging.
         registry.setAddr(node, 60, addr);
+
+        registry.setText(node, "roles", roles);
+        registry.setText(node, "description", "The roles for this app have been set under the 'roles' text record");
 
         // Register the name in the L2 registry
         registry.createSubnode(
@@ -79,6 +81,12 @@ contract L2Registrar {
             }
             return false;
         }
+    }
+
+    // Function to lookup the roles for a given label
+    function lookupRoles(string calldata label) external view returns (string memory) {
+        bytes32 node = _labelToNode(label);
+        return registry.text(node, "roles");
     }
 
     function _labelToNode(
