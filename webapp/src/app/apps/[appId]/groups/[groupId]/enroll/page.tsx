@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import { SelfQRcodeWrapper, SelfApp, SelfAppBuilder } from '@selfxyz/qrcode';
 import { useHypergraphAuth } from "@graphprotocol/hypergraph-react";
 import { useState } from "react";
+import { addUserToGroup } from "@/connectors/hypergraph";
 
 const SELF_CONTRACT_ADDRESS = "0x7b6436b0c98f62380866d9432c2af0ee08ce16a171bda6951aecd95ee1307d61";
 
@@ -31,10 +32,12 @@ export default function AppPermissions() {
 
     const handleSuccess = async (data?: any) => {
         console.log('Verification successful', data);
-        // If we get a tx hash from the data, use it
+        // If we get a tx hash from the data, use it to display progress
         if (data?.txHash) {
             setTxHash(data.txHash);
         }
+        // Add user to desired group
+        addUserToGroup(identity?.address ?? "", appId, groupId)
     };
 
     const handleError = async (error?: any) => {
@@ -65,7 +68,7 @@ export default function AppPermissions() {
                     rel="noopener noreferrer"
                     className="button is-primary is-outlined"
                 >
-                    View Your Token Transfers on Celoscan →
+                    View your verification here
                 </a>}
         </section>
       </div>
