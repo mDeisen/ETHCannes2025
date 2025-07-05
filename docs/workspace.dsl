@@ -55,17 +55,15 @@ workspace "ETHCANNES2025" "Hackathon project" {
             }
 
             nextApp = container "HybridApp" "Backend and Frontends" "Next.js, Hypergraph, Bulma" {
-                group "Admin Area" {
-                    subjectManagementPage = component "Subject Management" "Page for adding/updating groups and viewing users" {
-                        admin -> this "Manages group assignments"
-                        -> ENS "Query user name"
-                        -> graph "Read users. Read/write groups" "Hypergraph SDK" "async"
-                    }
+                subjectManagementPage = component "Subject Management" "Page for adding/updating groups and viewing users" {
+                    admin -> this "Manages group assignments"
+                    -> ENS "Query user name"
+                    -> graph "Read users. Read/write groups" "Hypergraph SDK" "async"
+                }
 
-                    objectManagementPage = component "Object Management" "Page for adding/updatings roles and access rights " {
-                        admin -> this "Manages roles and access rights"
-                        -> graph "Read/write roles and access rights" "Hypergraph SDK" "async"
-                    }
+                objectManagementPage = component "Object Management" "Page for adding/updatings roles and access rights " {
+                    admin -> this "Manages roles and access rights"
+                    -> graph "Read/write roles and access rights" "Hypergraph SDK" "async"
                 }
 
                 dashboard = component "Dashboard" "Requests login and displays user's roles" {
@@ -74,10 +72,9 @@ workspace "ETHCANNES2025" "Hackathon project" {
                     -> graph "Query roles" "Hypergraph SDK"
                 }
 
-                dummyPage = component "Dummy" "Page that is only available for specific roles" {
-                    user -> this "Attempt dummy feature" "" "async"
-                    -> graph "Check access right" "Hypergraph SDK"
-                    -> applicationContract.dummyFunction "Attempt dummy transaction" "" "async"
+                dummyPage = component "Applications page" "Lists applications for which you have roles" {
+                    admin -> this "Create new application" "Hypergraph SDK" "async"
+                    -> graph "Check roles" "Hypergraph SDK"
                 }
             }
         }
@@ -156,5 +153,4 @@ workspace "ETHCANNES2025" "Hackathon project" {
     configuration {
         scope softwaresystem
     }
-
 }
