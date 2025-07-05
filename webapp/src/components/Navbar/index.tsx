@@ -18,7 +18,7 @@ const Navbar: FC = () => {
     return <nav className="navbar is-light">
         <div className="navbar-brand">
             <Link href="/" className="has-text-weight-bold navbar-item is-size-4 has-text-primary">
-                IAM Graph
+                I&#39;m Graph
             </Link>
             <a 
                 role="button"
