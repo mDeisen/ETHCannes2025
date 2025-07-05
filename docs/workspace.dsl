@@ -17,7 +17,7 @@ workspace "ETHCANNES2025" "Hackathon project" {
             url "https://github.com/LayerZero-Labs/LayerZero-v2"
         }
 
-        graph = softwareSystem "The Graph"  {
+        graph = softwareSystem "Hypergraph sync server"  {
             url "https://github.com/graphprotocol/hypergraph"
             tags "database"    
         }
@@ -54,7 +54,7 @@ workspace "ETHCANNES2025" "Hackathon project" {
                 -> applicationContract.identificationFunction "Forward verified user data" "Layer Zero" "async"
             }
 
-            nextApp = container "HybridApp" "Backend and Frontends" "Next.js, Hypergraph, Bulma" {
+            nextApp = container "Hybrid App" "Backend and Frontends" "Next.js, Hypergraph, Bulma" {
                 subjectManagementPage = component "Subject Management" "Page for adding/updating groups and viewing users" {
                     admin -> this "Manages group assignments"
                     -> ENS "Query user name"

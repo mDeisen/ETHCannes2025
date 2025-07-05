@@ -1,0 +1,21 @@
+# App registration and IAM
+
+In this flow, an app admin registers his app and sets up permissions and groups for it
+
+```mermaid
+sequenceDiagram
+ participant Admin
+ participant App Frontend
+ participant Hypergraph
+ participant Smart Contract Backend
+ participant ENS
+
+ Admin->>App Frontend: Define new app
+ App Frontend->>Hypergraph: Create new app entity with user as owner
+ App Frontend->>Smart Contract Backend: Request app creation
+ Smart Contract Backend->>ENS: Create subdomain for app
+ Admin->>App Frontend: Create permissions and roles
+ App Frontend->>Hypergraph: Create entities for permissions and roles
+ Admin->>App Frontend: Create groups with rules for dynamic membership
+
+```

@@ -6,7 +6,7 @@
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2025-07-05T09:19:47Z",
+  "lastModifiedDate" : "2025-07-05T10:45:06Z",
   "model" : {
     "people" : [ {
       "id" : "1",
@@ -413,7 +413,7 @@
   "views" : {
     "componentViews" : [ {
       "automaticLayout" : {
-        "applied" : false,
+        "applied" : true,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -422,30 +422,34 @@
         "vertices" : false
       },
       "containerId" : "8",
+      "dimensions" : {
+        "height" : 1624,
+        "width" : 3850
+      },
       "elements" : [ {
         "id" : "4",
-        "x" : 0,
-        "y" : 0
+        "x" : 949,
+        "y" : 785
       }, {
         "id" : "5",
-        "x" : 0,
-        "y" : 0
+        "x" : 3199,
+        "y" : 485
       }, {
         "id" : "9",
-        "x" : 0,
-        "y" : 0
+        "x" : 1699,
+        "y" : 785
       }, {
         "id" : "13",
-        "x" : 0,
-        "y" : 0
+        "x" : 1699,
+        "y" : 185
       }, {
         "id" : "17",
-        "x" : 0,
-        "y" : 0
+        "x" : 2449,
+        "y" : 785
       }, {
         "id" : "20",
-        "x" : 0,
-        "y" : 0
+        "x" : 199,
+        "y" : 1089
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "applicationContract_com",
@@ -461,11 +465,15 @@
       }, {
         "id" : "23"
       }, {
-        "id" : "27"
+        "id" : "27",
+        "vertices" : [ {
+          "x" : 2149,
+          "y" : 1235
+        } ]
       } ]
     }, {
       "automaticLayout" : {
-        "applied" : false,
+        "applied" : true,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -474,14 +482,18 @@
         "vertices" : false
       },
       "containerId" : "20",
+      "dimensions" : {
+        "height" : 811,
+        "width" : 1620
+      },
       "elements" : [ {
         "id" : "4",
-        "x" : 0,
-        "y" : 0
+        "x" : 970,
+        "y" : 185
       }, {
         "id" : "21",
-        "x" : 0,
-        "y" : 0
+        "x" : 220,
+        "y" : 185
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "selfConnector_com",
@@ -491,7 +503,7 @@
       } ]
     }, {
       "automaticLayout" : {
-        "applied" : false,
+        "applied" : true,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -500,42 +512,46 @@
         "vertices" : false
       },
       "containerId" : "29",
+      "dimensions" : {
+        "height" : 2611,
+        "width" : 2300
+      },
       "elements" : [ {
         "id" : "1",
-        "x" : 0,
-        "y" : 0
+        "x" : 200,
+        "y" : 560
       }, {
         "id" : "2",
-        "x" : 0,
-        "y" : 0
+        "x" : 200,
+        "y" : 1510
       }, {
         "id" : "5",
-        "x" : 0,
-        "y" : 0
+        "x" : 1650,
+        "y" : 1085
       }, {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
+        "x" : 1650,
+        "y" : 185
       }, {
         "id" : "20",
-        "x" : 0,
-        "y" : 0
+        "x" : 1650,
+        "y" : 1985
       }, {
         "id" : "30",
-        "x" : 0,
-        "y" : 0
+        "x" : 900,
+        "y" : 185
       }, {
         "id" : "39",
-        "x" : 0,
-        "y" : 0
+        "x" : 900,
+        "y" : 785
       }, {
         "id" : "42",
-        "x" : 0,
-        "y" : 0
+        "x" : 900,
+        "y" : 1985
       }, {
         "id" : "49",
-        "x" : 0,
-        "y" : 0
+        "x" : 900,
+        "y" : 1385
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "nextApp_com",
@@ -545,7 +561,11 @@
       }, {
         "id" : "34"
       }, {
-        "id" : "37"
+        "id" : "37",
+        "vertices" : [ {
+          "x" : 1454,
+          "y" : 635
+        } ]
       }, {
         "id" : "40"
       }, {
@@ -555,7 +575,11 @@
       }, {
         "id" : "46"
       }, {
-        "id" : "48"
+        "id" : "48",
+        "vertices" : [ {
+          "x" : 1454,
+          "y" : 1835
+        } ]
       }, {
         "id" : "50"
       }, {
@@ -564,7 +588,7 @@
     } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "hack_con",
+      "lastSavedView" : "applicationContract_com",
       "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
