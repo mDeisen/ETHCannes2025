@@ -1,10 +1,12 @@
 {
-  "configuration" : { },
+  "configuration" : {
+    "scope" : "SoftwareSystem"
+  },
   "description" : "Hackathon project",
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2025-07-04T22:35:33Z",
+  "lastModifiedDate" : "2025-07-05T00:11:06Z",
   "model" : {
     "people" : [ {
       "id" : "1",
@@ -14,17 +16,29 @@
         "structurizr.dsl.identifier" : "admin"
       },
       "relationships" : [ {
-        "description" : "Manages access rights",
-        "destinationId" : "7",
-        "id" : "12",
+        "description" : "Manages group assignments",
+        "destinationId" : "30",
+        "id" : "31",
         "sourceId" : "1",
         "tags" : "Relationship"
       }, {
-        "description" : "Manages access rights",
-        "destinationId" : "3",
-        "id" : "13",
-        "linkedRelationshipId" : "12",
+        "description" : "Manages group assignments",
+        "destinationId" : "29",
+        "id" : "32",
+        "linkedRelationshipId" : "31",
         "sourceId" : "1"
+      }, {
+        "description" : "Manages group assignments",
+        "destinationId" : "7",
+        "id" : "33",
+        "linkedRelationshipId" : "31",
+        "sourceId" : "1"
+      }, {
+        "description" : "Manages roles and access rights",
+        "destinationId" : "39",
+        "id" : "40",
+        "sourceId" : "1",
+        "tags" : "Relationship"
       } ],
       "tags" : "Element,Person"
     }, {
@@ -35,136 +49,42 @@
         "structurizr.dsl.identifier" : "user"
       },
       "relationships" : [ {
-        "description" : "Registers and uses",
-        "destinationId" : "4",
-        "id" : "16",
+        "description" : "Login",
+        "destinationId" : "42",
+        "id" : "43",
         "sourceId" : "2",
         "tags" : "Relationship"
       }, {
-        "description" : "Registers and uses",
-        "destinationId" : "3",
-        "id" : "17",
-        "linkedRelationshipId" : "16",
+        "description" : "Login",
+        "destinationId" : "29",
+        "id" : "44",
+        "linkedRelationshipId" : "43",
         "sourceId" : "2"
       }, {
-        "description" : "Identify with passport",
-        "destinationId" : "8",
-        "id" : "18",
+        "description" : "Login",
+        "destinationId" : "7",
+        "id" : "45",
+        "linkedRelationshipId" : "43",
+        "sourceId" : "2"
+      }, {
+        "description" : "Attempt dummy feature",
+        "destinationId" : "49",
+        "id" : "50",
         "sourceId" : "2",
         "tags" : "Relationship,async"
+      }, {
+        "description" : "Identify with passport",
+        "destinationId" : "3",
+        "id" : "56",
+        "sourceId" : "2",
+        "tags" : "Relationship,async",
+        "technology" : "NFC"
       } ],
       "tags" : "Element,Person"
     } ],
     "softwareSystems" : [ {
-      "containers" : [ {
-        "documentation" : { },
-        "id" : "4",
-        "name" : "HybridApp",
-        "properties" : {
-          "structurizr.dsl.identifier" : "hack.nextapp"
-        },
-        "relationships" : [ {
-          "description" : "Identifies users",
-          "destinationId" : "6",
-          "id" : "19",
-          "sourceId" : "4",
-          "tags" : "Relationship"
-        }, {
-          "description" : "<with Hypergraph SDK> Manages users",
-          "destinationId" : "10",
-          "id" : "20",
-          "sourceId" : "4",
-          "tags" : "Relationship,async"
-        }, {
-          "description" : "???",
-          "destinationId" : "11",
-          "id" : "21",
-          "sourceId" : "4",
-          "tags" : "Relationship"
-        } ],
-        "tags" : "Element,Container"
-      }, {
-        "documentation" : { },
-        "id" : "5",
-        "name" : "Governance Contract",
-        "properties" : {
-          "structurizr.dsl.identifier" : "hack.govcontract"
-        },
-        "relationships" : [ {
-          "description" : "Add user entity with verified group memberships",
-          "destinationId" : "10",
-          "id" : "26",
-          "sourceId" : "5",
-          "tags" : "Relationship"
-        } ],
-        "tags" : "Element,Container"
-      }, {
-        "documentation" : { },
-        "id" : "6",
-        "name" : "Self.xyz Connector Contract",
-        "properties" : {
-          "structurizr.dsl.identifier" : "hack.selfconnector"
-        },
-        "relationships" : [ {
-          "description" : "Identify users",
-          "destinationId" : "8",
-          "id" : "23",
-          "sourceId" : "6",
-          "tags" : "Relationship"
-        }, {
-          "description" : "<via Layer Zero> Sends verified user data",
-          "destinationId" : "5",
-          "id" : "25",
-          "sourceId" : "6",
-          "tags" : "Relationship,async"
-        } ],
-        "tags" : "Element,Container"
-      }, {
-        "documentation" : { },
-        "id" : "7",
-        "name" : "Geobrowser Space",
-        "properties" : {
-          "structurizr.dsl.identifier" : "hack.geospace"
-        },
-        "relationships" : [ {
-          "description" : "Read/write graph data",
-          "destinationId" : "10",
-          "id" : "14",
-          "sourceId" : "7",
-          "tags" : "Relationship"
-        } ],
-        "tags" : "Element,Container"
-      } ],
       "documentation" : { },
       "id" : "3",
-      "location" : "Unspecified",
-      "name" : "The Hack",
-      "properties" : {
-        "structurizr.dsl.identifier" : "hack"
-      },
-      "relationships" : [ {
-        "description" : "Read/write graph data",
-        "destinationId" : "10",
-        "id" : "15",
-        "linkedRelationshipId" : "14",
-        "sourceId" : "3"
-      }, {
-        "description" : "???",
-        "destinationId" : "11",
-        "id" : "22",
-        "linkedRelationshipId" : "21",
-        "sourceId" : "3"
-      }, {
-        "description" : "Identify users",
-        "destinationId" : "8",
-        "id" : "24",
-        "linkedRelationshipId" : "23",
-        "sourceId" : "3"
-      } ],
-      "tags" : "Element,Software System"
-    }, {
-      "documentation" : { },
-      "id" : "8",
       "location" : "Unspecified",
       "name" : "Self.xyz",
       "properties" : {
@@ -173,46 +93,606 @@
       "tags" : "Element,Software System"
     }, {
       "documentation" : { },
-      "id" : "9",
+      "id" : "4",
       "location" : "Unspecified",
-      "name" : "LayerZero",
+      "name" : "Layer Zero",
       "properties" : {
         "structurizr.dsl.identifier" : "layerzero"
       },
-      "tags" : "Element,Software System"
+      "relationships" : [ {
+        "description" : "Forward transaction",
+        "destinationId" : "9",
+        "id" : "10",
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Forward transaction",
+        "destinationId" : "8",
+        "id" : "11",
+        "linkedRelationshipId" : "10",
+        "sourceId" : "4"
+      }, {
+        "description" : "Forward transaction",
+        "destinationId" : "7",
+        "id" : "12",
+        "linkedRelationshipId" : "10",
+        "sourceId" : "4"
+      } ],
+      "tags" : "Element,Software System,queue"
     }, {
       "documentation" : { },
-      "id" : "10",
+      "id" : "5",
       "location" : "Unspecified",
       "name" : "The Graph",
       "properties" : {
         "structurizr.dsl.identifier" : "graph"
       },
-      "tags" : "Element,Software System"
+      "tags" : "Element,Software System,database"
     }, {
       "documentation" : { },
-      "id" : "11",
+      "id" : "6",
       "location" : "Unspecified",
       "name" : "ENS",
       "properties" : {
         "structurizr.dsl.identifier" : "ens"
       },
-      "tags" : "Element,Software System"
+      "tags" : "Element,Software System,database"
+    }, {
+      "containers" : [ {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "9",
+          "name" : "Layer Zero interface",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.applicationcontract.lzinterface"
+          },
+          "relationships" : [ {
+            "description" : "Calls after receiving verified user data",
+            "destinationId" : "17",
+            "id" : "19",
+            "sourceId" : "9",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "13",
+          "name" : "Dummy function that requires a transaction and is limited to specific access right",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.applicationcontract.dummyfunction"
+          },
+          "relationships" : [ {
+            "description" : "Verifies access right",
+            "destinationId" : "5",
+            "id" : "14",
+            "sourceId" : "13",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "17",
+          "name" : "Function for adding new users to app",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.applicationcontract.identificationfunction"
+          },
+          "relationships" : [ {
+            "description" : "Add user with verified data",
+            "destinationId" : "5",
+            "id" : "18",
+            "sourceId" : "17",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "Contract for the demo app leveraging graph for IAM. Also forwards data from Self to graph.",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "Application Contract",
+        "properties" : {
+          "structurizr.dsl.identifier" : "hack.applicationcontract"
+        },
+        "relationships" : [ {
+          "description" : "Verifies access right",
+          "destinationId" : "5",
+          "id" : "15",
+          "linkedRelationshipId" : "14",
+          "sourceId" : "8"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "ETH Mainnet / Sepolia"
+      }, {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "21",
+          "name" : "Layer Zero interface",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.selfconnector.lzinterface"
+          },
+          "relationships" : [ {
+            "description" : "Sends transactions after identifying user",
+            "destinationId" : "4",
+            "id" : "22",
+            "sourceId" : "21",
+            "tags" : "Relationship,async"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "Contract for connecting with Self",
+        "documentation" : { },
+        "id" : "20",
+        "name" : "Self.xyz Connector Contract",
+        "properties" : {
+          "structurizr.dsl.identifier" : "hack.selfconnector"
+        },
+        "relationships" : [ {
+          "description" : "Sends transactions after identifying user",
+          "destinationId" : "4",
+          "id" : "23",
+          "linkedRelationshipId" : "22",
+          "sourceId" : "20"
+        }, {
+          "description" : "Send user data",
+          "destinationId" : "3",
+          "id" : "25",
+          "sourceId" : "20",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Forward verified user data",
+          "destinationId" : "17",
+          "id" : "27",
+          "sourceId" : "20",
+          "tags" : "Relationship,async",
+          "technology" : "Layer Zero"
+        }, {
+          "description" : "Forward verified user data",
+          "destinationId" : "8",
+          "id" : "28",
+          "linkedRelationshipId" : "27",
+          "sourceId" : "20",
+          "technology" : "Layer Zero"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Celo"
+      }, {
+        "components" : [ {
+          "description" : "Page for adding/updating groups and viewing users",
+          "documentation" : { },
+          "group" : "Admin Area",
+          "id" : "30",
+          "name" : "Subject Management",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.nextapp.subjectmanagementpage"
+          },
+          "relationships" : [ {
+            "description" : "Query user name",
+            "destinationId" : "6",
+            "id" : "34",
+            "sourceId" : "30",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Read users. Read/write groups",
+            "destinationId" : "5",
+            "id" : "37",
+            "sourceId" : "30",
+            "tags" : "Relationship,async",
+            "technology" : "Hypergraph SDK"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Page for adding/updatings roles and access rights",
+          "documentation" : { },
+          "group" : "Admin Area",
+          "id" : "39",
+          "name" : "Object Management",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.nextapp.objectmanagementpage"
+          },
+          "relationships" : [ {
+            "description" : "Read/write roles and access rights",
+            "destinationId" : "5",
+            "id" : "41",
+            "sourceId" : "39",
+            "tags" : "Relationship,async",
+            "technology" : "Hypergraph SDK"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Requests login and displays user's roles",
+          "documentation" : { },
+          "id" : "42",
+          "name" : "Dashboard",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.nextapp.dashboard"
+          },
+          "relationships" : [ {
+            "description" : "Forward to identification on first login",
+            "destinationId" : "20",
+            "id" : "46",
+            "sourceId" : "42",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Query roles",
+            "destinationId" : "5",
+            "id" : "48",
+            "sourceId" : "42",
+            "tags" : "Relationship",
+            "technology" : "Hypergraph SDK"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Page that is only available for specific roles",
+          "documentation" : { },
+          "id" : "49",
+          "name" : "Dummy",
+          "properties" : {
+            "structurizr.dsl.identifier" : "hack.nextapp.dummypage"
+          },
+          "relationships" : [ {
+            "description" : "Check access right",
+            "destinationId" : "5",
+            "id" : "51",
+            "sourceId" : "49",
+            "tags" : "Relationship",
+            "technology" : "Hypergraph SDK"
+          }, {
+            "description" : "Attempt dummy transaction",
+            "destinationId" : "13",
+            "id" : "52",
+            "sourceId" : "49",
+            "tags" : "Relationship,async"
+          }, {
+            "description" : "Attempt dummy transaction",
+            "destinationId" : "8",
+            "id" : "53",
+            "linkedRelationshipId" : "52",
+            "sourceId" : "49"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "Backend and Frontends",
+        "documentation" : { },
+        "id" : "29",
+        "name" : "HybridApp",
+        "properties" : {
+          "structurizr.dsl.identifier" : "hack.nextapp"
+        },
+        "relationships" : [ {
+          "description" : "Query user name",
+          "destinationId" : "6",
+          "id" : "35",
+          "linkedRelationshipId" : "34",
+          "sourceId" : "29"
+        }, {
+          "description" : "Read users. Read/write groups",
+          "destinationId" : "5",
+          "id" : "38",
+          "linkedRelationshipId" : "37",
+          "sourceId" : "29",
+          "technology" : "Hypergraph SDK"
+        }, {
+          "description" : "Forward to identification on first login",
+          "destinationId" : "20",
+          "id" : "47",
+          "linkedRelationshipId" : "46",
+          "sourceId" : "29"
+        }, {
+          "description" : "Attempt dummy transaction",
+          "destinationId" : "13",
+          "id" : "54",
+          "linkedRelationshipId" : "52",
+          "sourceId" : "29"
+        }, {
+          "description" : "Attempt dummy transaction",
+          "destinationId" : "8",
+          "id" : "55",
+          "linkedRelationshipId" : "52",
+          "sourceId" : "29"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Next.js, Hypergraph, Bulma"
+      } ],
+      "documentation" : { },
+      "id" : "7",
+      "location" : "Unspecified",
+      "name" : "The Hack",
+      "properties" : {
+        "structurizr.dsl.identifier" : "hack"
+      },
+      "relationships" : [ {
+        "description" : "Verifies access right",
+        "destinationId" : "5",
+        "id" : "16",
+        "linkedRelationshipId" : "14",
+        "sourceId" : "7"
+      }, {
+        "description" : "Sends transactions after identifying user",
+        "destinationId" : "4",
+        "id" : "24",
+        "linkedRelationshipId" : "22",
+        "sourceId" : "7"
+      }, {
+        "description" : "Send user data",
+        "destinationId" : "3",
+        "id" : "26",
+        "linkedRelationshipId" : "25",
+        "sourceId" : "7"
+      }, {
+        "description" : "Query user name",
+        "destinationId" : "6",
+        "id" : "36",
+        "linkedRelationshipId" : "34",
+        "sourceId" : "7"
+      } ],
+      "tags" : "Element,Software System,focus"
     } ]
   },
   "name" : "ETHCANNES2025",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlICJFVEhDQU5ORVMyMDI1IiAiSGFja2F0aG9uIHByb2plY3QiIHsKCiAgICAhaWRlbnRpZmllcnMgaGllcmFyY2hpY2FsCgogICAgbW9kZWwgewogICAgICAgIGFkbWluID0gcGVyc29uICJBZG1pbmlzdHJhdG9yIgogICAgICAgIHVzZXIgPSBwZXJzb24gInVzZXIiCgogICAgICAgIGhhY2sgPSBzb2Z0d2FyZVN5c3RlbSAiVGhlIEhhY2siIHsKICAgICAgICAgICAgbmV4dEFwcCA9IGNvbnRhaW5lciAiSHlicmlkQXBwIiB7CgogICAgICAgICAgICB9CgogICAgICAgICAgICBnb3ZDb250cmFjdCA9IGNvbnRhaW5lciAiR292ZXJuYW5jZSBDb250cmFjdCIgewoKICAgICAgICAgICAgfQoKICAgICAgICAgICAgc2VsZkNvbm5lY3RvciA9IGNvbnRhaW5lciAiU2VsZi54eXogQ29ubmVjdG9yIENvbnRyYWN0IiB7CgogICAgICAgICAgICB9CgogICAgICAgICAgICBnZW9zcGFjZSA9IGNvbnRhaW5lciAiR2VvYnJvd3NlciBTcGFjZSIKICAgICAgICB9CgogICAgICAgIHNlbGYgPSBzb2Z0d2FyZVN5c3RlbSAiU2VsZi54eXoiCiAgICAgICAgbGF5ZXJaZXJvID0gc29mdHdhcmVTeXN0ZW0gIkxheWVyWmVybyIKICAgICAgICBncmFwaCA9IHNvZnR3YXJlU3lzdGVtICJUaGUgR3JhcGgiCiAgICAgICAgZW5zID0gc29mdHdhcmVTeXN0ZW0gIkVOUyIKCiAgICAgICAgYWRtaW4gLT4gaGFjay5nZW9zcGFjZSAiTWFuYWdlcyBhY2Nlc3MgcmlnaHRzIgogICAgICAgIGhhY2suZ2Vvc3BhY2UgLT4gZ3JhcGggIlJlYWQvd3JpdGUgZ3JhcGggZGF0YSIKICAgICAgICB1c2VyIC0+IGhhY2submV4dEFwcCAiUmVnaXN0ZXJzIGFuZCB1c2VzIgogICAgICAgIHVzZXIgLT4gc2VsZiAiSWRlbnRpZnkgd2l0aCBwYXNzcG9ydCIgIiIgImFzeW5jIgogICAgICAgIGhhY2submV4dEFwcCAtPiBoYWNrLnNlbGZDb25uZWN0b3IgIklkZW50aWZpZXMgdXNlcnMiCiAgICAgICAgaGFjay5uZXh0QXBwIC0+IGdyYXBoICI8d2l0aCBIeXBlcmdyYXBoIFNESz4gTWFuYWdlcyB1c2VycyIgIiIgImFzeW5jIgogICAgICAgIGhhY2submV4dEFwcCAtPiBlbnMgIj8/PyIKICAgICAgICBoYWNrLnNlbGZDb25uZWN0b3IgLT4gc2VsZiAiSWRlbnRpZnkgdXNlcnMiCiAgICAgICAgaGFjay5zZWxmQ29ubmVjdG9yIC0+IGhhY2suZ292Q29udHJhY3QgIjx2aWEgTGF5ZXIgWmVybz4gU2VuZHMgdmVyaWZpZWQgdXNlciBkYXRhIiAiIiAiYXN5bmMiCgogICAgICAgIGhhY2suZ292Q29udHJhY3QgLT4gZ3JhcGggIkFkZCB1c2VyIGVudGl0eSB3aXRoIHZlcmlmaWVkIGdyb3VwIG1lbWJlcnNoaXBzIgoKICAgIH0KCiAgICB2aWV3cyB7CiAgICAgICAgc3lzdGVtQ29udGV4dCBoYWNrICJTeXN0ZW1fQ29udGV4dCIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b2xheW91dCBscgogICAgICAgIH0KCiAgICAgICAgY29udGFpbmVyIGhhY2sgIkNvbnRhaW5lcnMiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9sYXlvdXQgbHIKICAgICAgICB9CgogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgICAgICAgICAgc2hhcGUgUGVyc29uCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIHJlbGF0aW9uc2hpcCAiUmVsYXRpb25zaGlwIiB7CiAgICAgICAgICAgICAgICBzdHlsZSBzb2xpZAogICAgICAgICAgICB9CgogICAgICAgICAgICByZWxhdGlvbnNoaXAgImFzeW5jIiB7CiAgICAgICAgICAgICAgICBzdHlsZSBkYXNoZWQKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICBjb25maWd1cmF0aW9uIHsKICAgICAgICBzY29wZSBub25lCiAgICB9Cgp9"
+    "structurizr.dsl" : "d29ya3NwYWNlICJFVEhDQU5ORVMyMDI1IiAiSGFja2F0aG9uIHByb2plY3QiIHsKCiAgICAhaWRlbnRpZmllcnMgaGllcmFyY2hpY2FsCgogICAgbW9kZWwgewogICAgICAgIGFkbWluID0gcGVyc29uICJBZG1pbmlzdHJhdG9yIiAiIgogICAgICAgIHVzZXIgPSBwZXJzb24gInVzZXIiICIiCgogICAgICAgIHNlbGYgPSBzb2Z0d2FyZVN5c3RlbSAiU2VsZi54eXoiCiAgICAgICAgbGF5ZXJaZXJvID0gc29mdHdhcmVTeXN0ZW0gIkxheWVyIFplcm8iICIiICJxdWV1ZSIKICAgICAgICBncmFwaCA9IHNvZnR3YXJlU3lzdGVtICJUaGUgR3JhcGgiICIiICJkYXRhYmFzZSIKICAgICAgICBlbnMgPSBzb2Z0d2FyZVN5c3RlbSAiRU5TIiAiIiAiZGF0YWJhc2UiCgogICAgICAgIGhhY2sgPSBzb2Z0d2FyZVN5c3RlbSAiVGhlIEhhY2siICIiICJmb2N1cyIgewogICAgICAgICAgICBhcHBsaWNhdGlvbkNvbnRyYWN0ID0gY29udGFpbmVyICJBcHBsaWNhdGlvbiBDb250cmFjdCIgIkNvbnRyYWN0IGZvciB0aGUgZGVtbyBhcHAgbGV2ZXJhZ2luZyBncmFwaCBmb3IgSUFNLiBBbHNvIGZvcndhcmRzIGRhdGEgZnJvbSBTZWxmIHRvIGdyYXBoLiIgIkVUSCBNYWlubmV0IC8gU2Vwb2xpYSIgewogICAgICAgICAgICAgICAgbHpJbnRlcmZhY2UgPSBjb21wb25lbnQgIkxheWVyIFplcm8gaW50ZXJmYWNlIiB7CiAgICAgICAgICAgICAgICAgICAgbGF5ZXJaZXJvIC0+IHRoaXMgIkZvcndhcmQgdHJhbnNhY3Rpb24iCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgZHVtbXlGdW5jdGlvbiA9IGNvbXBvbmVudCAiRHVtbXkgZnVuY3Rpb24gdGhhdCByZXF1aXJlcyBhIHRyYW5zYWN0aW9uIGFuZCBpcyBsaW1pdGVkIHRvIHNwZWNpZmljIGFjY2VzcyByaWdodCIgewogICAgICAgICAgICAgICAgICAgIC0+IGdyYXBoICJWZXJpZmllcyBhY2Nlc3MgcmlnaHQiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgaWRlbnRpZmljYXRpb25GdW5jdGlvbiA9IGNvbXBvbmVudCAiRnVuY3Rpb24gZm9yIGFkZGluZyBuZXcgdXNlcnMgdG8gYXBwIiB7CiAgICAgICAgICAgICAgICAgICAgLT4gZ3JhcGggIkFkZCB1c2VyIHdpdGggdmVyaWZpZWQgZGF0YSIKICAgICAgICAgICAgICAgICAgICBsekludGVyZmFjZSAtPiB0aGlzICJDYWxscyBhZnRlciByZWNlaXZpbmcgdmVyaWZpZWQgdXNlciBkYXRhIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CgogICAgICAgICAgICBzZWxmQ29ubmVjdG9yID0gY29udGFpbmVyICJTZWxmLnh5eiBDb25uZWN0b3IgQ29udHJhY3QiICJDb250cmFjdCBmb3IgY29ubmVjdGluZyB3aXRoIFNlbGYiICJDZWxvIiB7CiAgICAgICAgICAgICAgICBsekludGVyZmFjZSA9IGNvbXBvbmVudCAiTGF5ZXIgWmVybyBpbnRlcmZhY2UiIHsKICAgICAgICAgICAgICAgICAgICAtPiBsYXllclplcm8gIlNlbmRzIHRyYW5zYWN0aW9ucyBhZnRlciBpZGVudGlmeWluZyB1c2VyIiAiIiAiYXN5bmMiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgLT4gc2VsZiAiU2VuZCB1c2VyIGRhdGEiCgogICAgICAgICAgICAgICAgLT4gYXBwbGljYXRpb25Db250cmFjdC5pZGVudGlmaWNhdGlvbkZ1bmN0aW9uICJGb3J3YXJkIHZlcmlmaWVkIHVzZXIgZGF0YSIgIkxheWVyIFplcm8iICJhc3luYyIKICAgICAgICAgICAgfQoKICAgICAgICAgICAgbmV4dEFwcCA9IGNvbnRhaW5lciAiSHlicmlkQXBwIiAiQmFja2VuZCBhbmQgRnJvbnRlbmRzIiAiTmV4dC5qcywgSHlwZXJncmFwaCwgQnVsbWEiIHsKICAgICAgICAgICAgICAgIGdyb3VwICJBZG1pbiBBcmVhIiB7CiAgICAgICAgICAgICAgICAgICAgc3ViamVjdE1hbmFnZW1lbnRQYWdlID0gY29tcG9uZW50ICJTdWJqZWN0IE1hbmFnZW1lbnQiICJQYWdlIGZvciBhZGRpbmcvdXBkYXRpbmcgZ3JvdXBzIGFuZCB2aWV3aW5nIHVzZXJzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIGFkbWluIC0+IHRoaXMgIk1hbmFnZXMgZ3JvdXAgYXNzaWdubWVudHMiCiAgICAgICAgICAgICAgICAgICAgICAgIC0+IEVOUyAiUXVlcnkgdXNlciBuYW1lIgogICAgICAgICAgICAgICAgICAgICAgICAtPiBncmFwaCAiUmVhZCB1c2Vycy4gUmVhZC93cml0ZSBncm91cHMiICJIeXBlcmdyYXBoIFNESyIgImFzeW5jIgogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgb2JqZWN0TWFuYWdlbWVudFBhZ2UgPSBjb21wb25lbnQgIk9iamVjdCBNYW5hZ2VtZW50IiAiUGFnZSBmb3IgYWRkaW5nL3VwZGF0aW5ncyByb2xlcyBhbmQgYWNjZXNzIHJpZ2h0cyAiIHsKICAgICAgICAgICAgICAgICAgICAgICAgYWRtaW4gLT4gdGhpcyAiTWFuYWdlcyByb2xlcyBhbmQgYWNjZXNzIHJpZ2h0cyIKICAgICAgICAgICAgICAgICAgICAgICAgLT4gZ3JhcGggIlJlYWQvd3JpdGUgcm9sZXMgYW5kIGFjY2VzcyByaWdodHMiICJIeXBlcmdyYXBoIFNESyIgImFzeW5jIgogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICBkYXNoYm9hcmQgPSBjb21wb25lbnQgIkRhc2hib2FyZCIgIlJlcXVlc3RzIGxvZ2luIGFuZCBkaXNwbGF5cyB1c2VyJ3Mgcm9sZXMiIHsKICAgICAgICAgICAgICAgICAgICB1c2VyIC0+IHRoaXMgIkxvZ2luIgogICAgICAgICAgICAgICAgICAgIC0+IGhhY2suc2VsZkNvbm5lY3RvciAiRm9yd2FyZCB0byBpZGVudGlmaWNhdGlvbiBvbiBmaXJzdCBsb2dpbiIKICAgICAgICAgICAgICAgICAgICAtPiBncmFwaCAiUXVlcnkgcm9sZXMiICJIeXBlcmdyYXBoIFNESyIKICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICBkdW1teVBhZ2UgPSBjb21wb25lbnQgIkR1bW15IiAiUGFnZSB0aGF0IGlzIG9ubHkgYXZhaWxhYmxlIGZvciBzcGVjaWZpYyByb2xlcyIgewogICAgICAgICAgICAgICAgICAgIHVzZXIgLT4gdGhpcyAiQXR0ZW1wdCBkdW1teSBmZWF0dXJlIiAiIiAiYXN5bmMiCiAgICAgICAgICAgICAgICAgICAgLT4gZ3JhcGggIkNoZWNrIGFjY2VzcyByaWdodCIgIkh5cGVyZ3JhcGggU0RLIgogICAgICAgICAgICAgICAgICAgIC0+IGFwcGxpY2F0aW9uQ29udHJhY3QuZHVtbXlGdW5jdGlvbiAiQXR0ZW1wdCBkdW1teSB0cmFuc2FjdGlvbiIgIiIgImFzeW5jIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICB1c2VyIC0+IHNlbGYgIklkZW50aWZ5IHdpdGggcGFzc3BvcnQiICJORkMiICJhc3luYyIKICAgIH0KCiAgICB2aWV3cyB7CiAgICAgICAgc3lzdGVtQ29udGV4dCBoYWNrICJoYWNrX3NjIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgaGFjayAiaGFja19jb24iIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9sYXlvdXQgbHIKICAgICAgICB9CgogICAgICAgIGNvbXBvbmVudCBoYWNrLmFwcGxpY2F0aW9uQ29udHJhY3QgImFwcGxpY2F0aW9uQ29udHJhY3RfY29tIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb21wb25lbnQgaGFjay5zZWxmQ29ubmVjdG9yICJzZWxmQ29ubmVjdG9yX2NvbSIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b2xheW91dCBscgogICAgICAgIH0KCgogICAgICAgIGNvbXBvbmVudCBoYWNrLm5leHRBcHAgIm5leHRBcHBfY29tIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBzdHlsZXMgewogICAgICAgICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICAgICAgICAgIHNoYXBlIFBlcnNvbgogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50ICJCb3VuZGFyeSIgewogICAgICAgICAgICAgICAgc3Ryb2tlV2lkdGggNAogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50ICJHcm91cCIgewogICAgICAgICAgICAgICAgc3Ryb2tlV2lkdGggMwogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50ICJmb2N1cyIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCBsaWdodHNreWJsdWUKICAgICAgICAgICAgICAgIHN0cm9rZSBkYXJrc2xhdGVibHVlCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgImRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBjeWxpbmRlcgogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50ICJxdWV1ZSIgewogICAgICAgICAgICAgICAgc2hhcGUgcGlwZQogICAgICAgICAgICB9CgogICAgICAgICAgICByZWxhdGlvbnNoaXAgIlJlbGF0aW9uc2hpcCIgewogICAgICAgICAgICAgICAgc3R5bGUgc29saWQKICAgICAgICAgICAgfQoKICAgICAgICAgICAgcmVsYXRpb25zaGlwICJhc3luYyIgewogICAgICAgICAgICAgICAgc3R5bGUgZGFzaGVkCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgY29uZmlndXJhdGlvbiB7CiAgICAgICAgc2NvcGUgc29mdHdhcmVzeXN0ZW0KICAgIH0KCn0="
   },
   "views" : {
+    "componentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "containerId" : "8",
+      "dimensions" : {
+        "height" : 2499,
+        "width" : 4600
+      },
+      "elements" : [ {
+        "id" : "4",
+        "x" : 1699,
+        "y" : 1273
+      }, {
+        "id" : "5",
+        "x" : 3949,
+        "y" : 1273
+      }, {
+        "id" : "9",
+        "x" : 2449,
+        "y" : 1273
+      }, {
+        "id" : "13",
+        "x" : 2449,
+        "y" : 1873
+      }, {
+        "id" : "17",
+        "x" : 3199,
+        "y" : 1273
+      }, {
+        "id" : "20",
+        "x" : 949,
+        "y" : 973
+      }, {
+        "id" : "29",
+        "x" : 199,
+        "y" : 973
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "applicationContract_com",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "14",
+        "vertices" : [ {
+          "x" : 3753,
+          "y" : 1723
+        } ]
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "23"
+      }, {
+        "id" : "27",
+        "vertices" : [ {
+          "x" : 2899,
+          "y" : 1123
+        } ]
+      }, {
+        "id" : "38",
+        "vertices" : [ {
+          "x" : 1920,
+          "y" : 210
+        }, {
+          "x" : 2678,
+          "y" : 210
+        } ]
+      }, {
+        "id" : "47"
+      }, {
+        "id" : "54",
+        "vertices" : [ {
+          "x" : 949,
+          "y" : 1423
+        }, {
+          "x" : 1699,
+          "y" : 1723
+        } ]
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "containerId" : "20",
+      "dimensions" : {
+        "height" : 811,
+        "width" : 1620
+      },
+      "elements" : [ {
+        "id" : "4",
+        "x" : 970,
+        "y" : 185
+      }, {
+        "id" : "21",
+        "x" : 220,
+        "y" : 185
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "selfConnector_com",
+      "order" : 4,
+      "relationships" : [ {
+        "id" : "22"
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "containerId" : "29",
+      "dimensions" : {
+        "height" : 2905,
+        "width" : 3800
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 199,
+        "y" : 703
+      }, {
+        "id" : "2",
+        "x" : 199,
+        "y" : 1653
+      }, {
+        "id" : "5",
+        "x" : 3149,
+        "y" : 1528
+      }, {
+        "id" : "6",
+        "x" : 1649,
+        "y" : 315
+      }, {
+        "id" : "8",
+        "x" : 2399,
+        "y" : 2132
+      }, {
+        "id" : "20",
+        "x" : 1649,
+        "y" : 2132
+      }, {
+        "id" : "30",
+        "x" : 899,
+        "y" : 328
+      }, {
+        "id" : "39",
+        "x" : 899,
+        "y" : 928
+      }, {
+        "id" : "42",
+        "x" : 899,
+        "y" : 1528
+      }, {
+        "id" : "49",
+        "x" : 899,
+        "y" : 2128
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "nextApp_com",
+      "order" : 5,
+      "relationships" : [ {
+        "id" : "15"
+      }, {
+        "id" : "28"
+      }, {
+        "id" : "31"
+      }, {
+        "id" : "34"
+      }, {
+        "id" : "37",
+        "vertices" : [ {
+          "x" : 1649,
+          "y" : 165
+        }, {
+          "x" : 2099,
+          "y" : 165
+        } ]
+      }, {
+        "id" : "40"
+      }, {
+        "id" : "41",
+        "vertices" : [ {
+          "x" : 2849,
+          "y" : 1449
+        } ]
+      }, {
+        "id" : "43"
+      }, {
+        "id" : "46",
+        "vertices" : [ {
+          "x" : 1558,
+          "y" : 1978
+        } ]
+      }, {
+        "id" : "48"
+      }, {
+        "id" : "50"
+      }, {
+        "id" : "51",
+        "vertices" : [ {
+          "x" : 1649,
+          "y" : 2657
+        }, {
+          "x" : 2099,
+          "y" : 2657
+        }, {
+          "x" : 2849,
+          "y" : 2582
+        } ]
+      }, {
+        "id" : "53",
+        "vertices" : [ {
+          "x" : 1649,
+          "y" : 2582
+        }, {
+          "x" : 2099,
+          "y" : 2582
+        } ]
+      } ]
+    } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "Containers",
+      "lastSavedView" : "hack_con",
       "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
           "shape" : "Person",
           "tag" : "Person"
+        }, {
+          "strokeWidth" : 4,
+          "tag" : "Boundary"
+        }, {
+          "strokeWidth" : 3,
+          "tag" : "Group"
+        }, {
+          "background" : "#87cefa",
+          "stroke" : "#483d8b",
+          "tag" : "focus"
+        }, {
+          "shape" : "Cylinder",
+          "tag" : "database"
+        }, {
+          "shape" : "Pipe",
+          "tag" : "queue"
         } ],
         "relationships" : [ {
           "style" : "Solid",
@@ -235,86 +715,103 @@
         "vertices" : false
       },
       "dimensions" : {
-        "height" : 2319,
+        "height" : 2409,
         "width" : 3800
       },
       "elements" : [ {
         "id" : "1",
         "x" : 200,
-        "y" : 230
+        "y" : 669
       }, {
         "id" : "2",
         "x" : 200,
-        "y" : 1480
+        "y" : 1619
+      }, {
+        "id" : "3",
+        "x" : 2400,
+        "y" : 1874
       }, {
         "id" : "4",
-        "x" : 900,
-        "y" : 880
+        "x" : 2400,
+        "y" : 1228
       }, {
         "id" : "5",
-        "x" : 2400,
-        "y" : 880
+        "x" : 3150,
+        "y" : 165
       }, {
         "id" : "6",
         "x" : 1650,
-        "y" : 880
-      }, {
-        "id" : "7",
-        "x" : 900,
-        "y" : 280
+        "y" : 1319
       }, {
         "id" : "8",
         "x" : 2400,
-        "y" : 1784
-      }, {
-        "id" : "10",
-        "x" : 3150,
-        "y" : 276
-      }, {
-        "id" : "11",
-        "x" : 1650,
-        "y" : 1480
-      } ],
-      "externalSoftwareSystemBoundariesVisible" : false,
-      "key" : "Containers",
-      "order" : 2,
-      "relationships" : [ {
-        "id" : "12"
-      }, {
-        "id" : "14",
-        "vertices" : [ {
-          "x" : 1650,
-          "y" : 196
-        }, {
-          "x" : 2954,
-          "y" : 196
-        } ]
-      }, {
-        "id" : "16"
-      }, {
-        "id" : "18",
-        "vertices" : [ {
-          "x" : 1650,
-          "y" : 1930
-        } ]
-      }, {
-        "id" : "19"
+        "y" : 519
       }, {
         "id" : "20",
+        "x" : 1650,
+        "y" : 719
+      }, {
+        "id" : "29",
+        "x" : 900,
+        "y" : 719
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "hack_con",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "11",
         "vertices" : [ {
-          "x" : 1650,
-          "y" : 730
+          "x" : 2625,
+          "y" : 1142
+        }, {
+          "x" : 2625,
+          "y" : 905
         } ]
       }, {
-        "id" : "21"
+        "id" : "15"
       }, {
         "id" : "23"
       }, {
-        "id" : "25"
+        "id" : "25",
+        "vertices" : [ {
+          "x" : 2100,
+          "y" : 1169
+        }, {
+          "x" : 2400,
+          "y" : 1678
+        } ]
       }, {
-        "id" : "26"
+        "id" : "28"
+      }, {
+        "id" : "32"
+      }, {
+        "id" : "35"
+      }, {
+        "id" : "38",
+        "vertices" : [ {
+          "x" : 1650,
+          "y" : 490
+        }, {
+          "x" : 2400,
+          "y" : 369
+        } ]
+      }, {
+        "id" : "44"
+      }, {
+        "id" : "47"
+      }, {
+        "id" : "55",
+        "vertices" : [ {
+          "x" : 1650,
+          "y" : 569
+        }, {
+          "x" : 2100,
+          "y" : 569
+        } ]
+      }, {
+        "id" : "56"
       } ],
-      "softwareSystemId" : "3"
+      "softwareSystemId" : "7"
     } ],
     "systemContextViews" : [ {
       "automaticLayout" : {
@@ -339,35 +836,43 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "8",
+        "id" : "4",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "10",
+        "id" : "5",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "11",
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
         "x" : 0,
         "y" : 0
       } ],
       "enterpriseBoundaryVisible" : true,
-      "key" : "System_Context",
+      "key" : "hack_sc",
       "order" : 1,
       "relationships" : [ {
-        "id" : "13"
+        "id" : "12"
       }, {
-        "id" : "15"
-      }, {
-        "id" : "17"
-      }, {
-        "id" : "18"
-      }, {
-        "id" : "22"
+        "id" : "16"
       }, {
         "id" : "24"
+      }, {
+        "id" : "26"
+      }, {
+        "id" : "33"
+      }, {
+        "id" : "36"
+      }, {
+        "id" : "45"
+      }, {
+        "id" : "56"
       } ],
-      "softwareSystemId" : "3"
+      "softwareSystemId" : "7"
     } ]
   }
 }

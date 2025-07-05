@@ -3,49 +3,94 @@ workspace "ETHCANNES2025" "Hackathon project" {
     !identifiers hierarchical
 
     model {
-        admin = person "Administrator"
-        user = person "user"
+        admin = person "Administrator" ""
+        user = person "user" ""
 
-        hack = softwareSystem "The Hack" {
-            nextApp = container "HybridApp" {
+        self = softwareSystem "Self.xyz"
+        layerZero = softwareSystem "Layer Zero" "" "queue"
+        graph = softwareSystem "The Graph" "" "database"
+        ens = softwareSystem "ENS" "" "database"
 
+        hack = softwareSystem "The Hack" "" "focus" {
+            applicationContract = container "Application Contract" "Contract for the demo app leveraging graph for IAM. Also forwards data from Self to graph." "ETH Mainnet / Sepolia" {
+                lzInterface = component "Layer Zero interface" {
+                    layerZero -> this "Forward transaction"
+                }
+
+                dummyFunction = component "Dummy function that requires a transaction and is limited to specific access right" {
+                    -> graph "Verifies access right"
+                }
+
+                identificationFunction = component "Function for adding new users to app" {
+                    -> graph "Add user with verified data"
+                    lzInterface -> this "Calls after receiving verified user data"
+                }
             }
 
-            govContract = container "Governance Contract" {
+            selfConnector = container "Self.xyz Connector Contract" "Contract for connecting with Self" "Celo" {
+                lzInterface = component "Layer Zero interface" {
+                    -> layerZero "Sends transactions after identifying user" "" "async"
+                }
 
+                -> self "Send user data"
+
+                -> applicationContract.identificationFunction "Forward verified user data" "Layer Zero" "async"
             }
 
-            selfConnector = container "Self.xyz Connector Contract" {
+            nextApp = container "HybridApp" "Backend and Frontends" "Next.js, Hypergraph, Bulma" {
+                group "Admin Area" {
+                    subjectManagementPage = component "Subject Management" "Page for adding/updating groups and viewing users" {
+                        admin -> this "Manages group assignments"
+                        -> ENS "Query user name"
+                        -> graph "Read users. Read/write groups" "Hypergraph SDK" "async"
+                    }
 
+                    objectManagementPage = component "Object Management" "Page for adding/updatings roles and access rights " {
+                        admin -> this "Manages roles and access rights"
+                        -> graph "Read/write roles and access rights" "Hypergraph SDK" "async"
+                    }
+                }
+
+                dashboard = component "Dashboard" "Requests login and displays user's roles" {
+                    user -> this "Login"
+                    -> hack.selfConnector "Forward to identification on first login"
+                    -> graph "Query roles" "Hypergraph SDK"
+                }
+
+                dummyPage = component "Dummy" "Page that is only available for specific roles" {
+                    user -> this "Attempt dummy feature" "" "async"
+                    -> graph "Check access right" "Hypergraph SDK"
+                    -> applicationContract.dummyFunction "Attempt dummy transaction" "" "async"
+                }
             }
         }
 
-        self = softwareSystem "Self.xyz"
-        layerZero = softwareSystem "LayerZero"
-        graph = softwareSystem "The Graph"
-        geobrowser = softwareSystem "Geobrowser"
-        ens = softwareSystem "ENS"
-
-        admin -> hack.nextApp "Manages access rights"
-        user -> hack.nextApp "Registers and uses"
-        user -> self "Identify with passport" "" "async"
-        hack.nextApp -> hack.selfConnector "Identifies users"
-        hack.nextApp -> graph "<with Hypergraph SDK> Manages users" "" "async"
-        hack.nextApp -> ens "???"
-        hack.selfConnector -> self "Identify users"
-        hack.selfConnector -> hack.govContract "<via Layer Zero> Sends verified user data" "" "async"
-
-        hack.govContract -> graph "Add user entity with verified group memberships"
-
+        user -> self "Identify with passport" "NFC" "async"
     }
 
     views {
-        systemContext hack "System_Context" {
+        systemContext hack "hack_sc" {
             include *
             autolayout lr
         }
 
-        container hack "Containers" {
+        container hack "hack_con" {
+            include *
+            autolayout lr
+        }
+
+        component hack.applicationContract "applicationContract_com" {
+            include *
+            autolayout lr
+        }
+
+        component hack.selfConnector "selfConnector_com" {
+            include *
+            autolayout lr
+        }
+
+
+        component hack.nextApp "nextApp_com" {
             include *
             autolayout lr
         }
@@ -53,6 +98,27 @@ workspace "ETHCANNES2025" "Hackathon project" {
         styles {
             element "Person" {
                 shape Person
+            }
+
+            element "Boundary" {
+                strokeWidth 4
+            }
+
+            element "Group" {
+                strokeWidth 3
+            }
+
+            element "focus" {
+                background lightskyblue
+                stroke darkslateblue
+            }
+
+            element "database" {
+                shape cylinder
+            }
+
+            element "queue" {
+                shape pipe
             }
 
             relationship "Relationship" {
