@@ -5,8 +5,7 @@
   "description" : "Hackathon project",
   "documentation" : { },
   "id" : 1,
-  "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2025-07-05T23:11:45Z",
+  "lastModifiedDate" : "2025-07-06T00:55:29Z",
   "model" : {
     "people" : [ {
       "id" : "1",
@@ -576,7 +575,6 @@
     "configuration" : {
       "branding" : { },
       "lastSavedView" : "hack_con",
-      "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
           "shape" : "Person",
@@ -614,7 +612,7 @@
     },
     "containerViews" : [ {
       "automaticLayout" : {
-        "applied" : true,
+        "applied" : false,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -622,59 +620,48 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
-      "dimensions" : {
-        "height" : 1750,
-        "width" : 3800
-      },
       "elements" : [ {
         "id" : "1",
-        "x" : 200,
-        "y" : 965
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "2",
-        "x" : 200,
-        "y" : 265
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "3",
-        "x" : 900,
-        "y" : 315
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "4",
-        "x" : 2400,
-        "y" : 315
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "5",
-        "x" : 3150,
-        "y" : 615
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "6",
-        "x" : 3150,
-        "y" : 1215
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "8",
-        "x" : 2400,
-        "y" : 915
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "22",
-        "x" : 1650,
-        "y" : 915
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "31",
-        "x" : 900,
-        "y" : 915
+        "x" : 0,
+        "y" : 0
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "hack_con",
       "order" : 2,
       "relationships" : [ {
-        "id" : "11",
-        "vertices" : [ {
-          "x" : 2625,
-          "y" : 665
-        }, {
-          "x" : 2625,
-          "y" : 865
-        } ]
+        "id" : "11"
       }, {
         "id" : "15"
       }, {
@@ -688,22 +675,11 @@
       }, {
         "id" : "34"
       }, {
-        "id" : "37",
-        "vertices" : [ {
-          "x" : 1650,
-          "y" : 1365
-        } ]
+        "id" : "37"
       }, {
         "id" : "39"
       }, {
-        "id" : "41",
-        "vertices" : [ {
-          "x" : 2400,
-          "y" : 165
-        }, {
-          "x" : 2954,
-          "y" : 165
-        } ]
+        "id" : "41"
       }, {
         "id" : "47"
       }, {
