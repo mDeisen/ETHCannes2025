@@ -3,7 +3,6 @@ import { type FC } from "react"
 import { Group } from "@/connectors/schema"
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { Group } from "@/connectors/schema";
 
 const GroupCard: FC<{group: Group}> = ({group}) => {
     const { appId } = useParams();
