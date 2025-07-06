@@ -13,6 +13,11 @@ contract AnyAuthL2Registrar {
     /// @param owner The owner of the newly registered name
     event NameRegistered(string indexed label, address indexed owner);
 
+    /// @notice Emitted when a role entry is updated
+    /// @param label The label of the name
+    /// @param roles The roles for the app
+    event RolesUpdated(string indexed label, string indexed roles);
+
     /// @notice Reference to the target registry contract
     IL2Registry public immutable registry;
 
@@ -70,6 +75,15 @@ contract AnyAuthL2Registrar {
         emit NameRegistered(label, owner);
     }
 
+    /// @notice Updates the roles for a given label
+    /// @param label The label of the name
+    /// @param roles The roles for the app
+    function updateRoles(string calldata label, string calldata roles) external {
+        bytes32 node = _labelToNode(label);
+        registry.setText(node, "roles", roles);
+        emit RolesUpdated(label, roles);
+    }
+
     /// @notice Checks if a given label is available for registration
     /// @dev Uses try-catch to handle the ERC721NonexistentToken error
     /// @param label The label to check availability for
@@ -79,11 +93,14 @@ contract AnyAuthL2Registrar {
         return _isAvailable(label);
     }
 
-    // Function to lookup the roles for a given label
+    /// @notice Looks up the roles for a given label
+    /// @param label The label of the name
+    /// @return roles The roles for the app
     function lookupRoles(string calldata label) external view returns (string memory) {
         bytes32 node = _labelToNode(label);
         return registry.text(node, "roles");
     }
+
 
     function _isAvailable(
         string calldata label
