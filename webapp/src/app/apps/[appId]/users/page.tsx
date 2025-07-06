@@ -9,13 +9,30 @@ export default function AppUsers() {
     return "Error";
   }
 
+  const users: User[] = [
+    {
+      name: "steffan",
+      address: "0x1234567890",
+    },
+    {
+      name: "mattis",
+      address: "0x1234567890",
+    },
+    {
+      name: "max",
+      address: "0x1234567890",
+    },
+  ]
+
   return (
     <>
       <div className="container is-max-desktop">
         <section className="section">
           <h4 className="is-size-4">Users</h4>
           <div>
-            This app has 12 user.
+            {users.map((user) => (
+              <div key={user.name}>{user.name} with address {user.address}</div>
+            ))}
           </div>
         </section>
         <section className="section">

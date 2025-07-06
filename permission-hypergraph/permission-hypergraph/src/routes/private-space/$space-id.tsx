@@ -20,7 +20,7 @@ function RouteComponent() {
   const { 'space-id': spaceId } = Route.useParams();
 
   return (
-    <HypergraphSpaceProvider space={spaceId}>
+    <HypergraphSpaceProvider space={"37a2994a-ed71-47d4-b88d-691cff5883b4"}>
       <PrivateSpace />
     </HypergraphSpaceProvider>
   );
