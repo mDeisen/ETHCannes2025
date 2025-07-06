@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {StringUtils} from "@ensdomains/ens-contracts/contracts/utils/StringUtils.sol";
+import {StringUtils} from "@ensdomains/ens-contracts/utils/StringUtils.sol";
 
 import {IL2Registry} from "../interfaces/IL2Registry.sol";
 
@@ -37,12 +37,17 @@ contract AnyAuthL2Registrar {
         registry = IL2Registry(_registry);
     }
 
-    /// @notice Registers a new name
-    /// @param label The label to register (e.g. "name" for "name.eth")
+    /// @notice Registers a new name under the application subdomain
+    /// @param label The label to register - that can be an ens 2nd level domain 
+    /// (e.g. "username" for "username.applicationname.eth", e.g. "max" in "max.anyauth.eth")
+    /// Can refer to "username(.eth)"
     /// @param owner The address that will own the name
+    /// @param roles The roles for the app
     function register(string calldata label, address owner, string calldata roles) external {
         bytes32 node = _labelToNode(label);
         bytes memory addr = abi.encodePacked(owner); // Convert address to bytes
+
+        require(_isAvailable(label), "Label not available");
 
         // Set the forward address for the current chain. This is needed for reverse resolution.
         // E.g. if this contract is deployed to Base, set an address for chainId 8453 which is
@@ -70,6 +75,19 @@ contract AnyAuthL2Registrar {
     /// @param label The label to check availability for
     /// @return available True if the label can be registered, false if already taken
     function available(string calldata label) external view returns (bool) {
+
+        return _isAvailable(label);
+    }
+
+    // Function to lookup the roles for a given label
+    function lookupRoles(string calldata label) external view returns (string memory) {
+        bytes32 node = _labelToNode(label);
+        return registry.text(node, "roles");
+    }
+
+    function _isAvailable(
+        string calldata label
+    ) private view returns (bool) {
         bytes32 node = _labelToNode(label);
         uint256 tokenId = uint256(node);
 
@@ -81,12 +99,6 @@ contract AnyAuthL2Registrar {
             }
             return false;
         }
-    }
-
-    // Function to lookup the roles for a given label
-    function lookupRoles(string calldata label) external view returns (string memory) {
-        bytes32 node = _labelToNode(label);
-        return registry.text(node, "roles");
     }
 
     function _labelToNode(
